@@ -1,5 +1,7 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { Actions } from 'react-native-router-flux'
+import { Field, reduxForm } from 'redux-form'
 
 import Logo from '../components/Logo'
 import Form from '../components/Form'
@@ -10,13 +12,17 @@ const Signup = () => {
             <Logo />
             <Form type={'Sign Up'}/>
             <View style={styles.signinTextContainer}>
-                <Text style={styles.signinText}>Already Have an account?</Text>
+                <TouchableOpacity onPress={() => Actions.login()}>
+                    <Text style={styles.signinText}>Already Have an account?</Text>
+                </TouchableOpacity>
             </View>
         </View>
     )
 }
 
-export default Signup
+export default reduxForm({
+    form: 'register'
+})(Signup)
 
 const styles = StyleSheet.create({
     container: {
@@ -31,9 +37,7 @@ const styles = StyleSheet.create({
         marginVertical: 15,
     },
     signinText: {
-        color: 'rgba(255, 255, 255, 0.7)',
-        fontSize: 18
+        fontSize: 18,
+        color: 'white'
     }
 })
-
-

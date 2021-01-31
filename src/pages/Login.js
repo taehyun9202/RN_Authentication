@@ -1,8 +1,9 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native'
+import { Actions } from 'react-native-router-flux'
 import Logo from '../components/Logo'
 import Form from '../components/Form'
+import { TouchableHighlight } from 'react-native-gesture-handler'
 
 const Login = () => {
     return (
@@ -10,7 +11,9 @@ const Login = () => {
             <Logo />
             <Form type={'Log In'}/>
             <View style={styles.signupTextContainer}>
-                <Text style={styles.signupText}>Don't Have an account?</Text>
+                <TouchableOpacity onPress={() => Actions.singUp()}>
+                    <Text style={styles.signupText} >Don't Have an account?</Text>
+                </TouchableOpacity>
             </View>
         </View>
     )
@@ -31,7 +34,7 @@ const styles = StyleSheet.create({
         marginVertical: 15,
     },
     signupText: {
-        color: 'rgba(255, 255, 255, 0.7)',
-        fontSize: 18
+        fontSize: 18,
+        color: 'white'
     }
 })

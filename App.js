@@ -1,29 +1,20 @@
 import React from 'react'
-import { StatusBar, StyleSheet, Text, View } from 'react-native'
+import { Provider } from 'react-redux'
+import { PersistGate } from 'redux-persist/integration/react'
 
-import Login from './src/pages/Login'
-import Signup from './src/pages/Signup'
+import Main from './src/Main'
+import persist from './src/config/store'
+
+const persistStore = persist()
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <StatusBar style={styles.statusBar} />
-      {/* <Login /> */}
-      <Signup />
-    </View>
+    <Provider store={persistStore.store}>
+      <PersistGate loading={null} persistor={persistStore.persistor}>
+        <Main />
+      </PersistGate>
+    </Provider>
   )
 }
 
 export default App
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#455a64',
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  statusBar: {
-    backgroundColor: 'tomato'
-  }
-})

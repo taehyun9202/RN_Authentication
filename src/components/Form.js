@@ -12,14 +12,19 @@ const Form = props => {
                 autoCompleteType='email'
                 keyboardType="email-address"
                 textContentType="emailAddress"
+                selectionColor='white'
+                ref={(ref) => this.email = ref}
+                onSubmitEditing={() => this.password.focus()}
             />
-            <TextInput 
+            <TextInput
                 style={styles.inputBox}
                 // underlineColorAndroid='rgba(0, 0, 0, 0)'
                 placeholder='Enter Password'
                 placeholderTextColor='white'
                 autoCompleteType="password"
+                selectionColor='white'
                 secureTextEntry={true}
+                ref={(ref) => this.password = ref}
             />
             <TouchableOpacity style={styles.buttonBox}>
                 <Text style={styles.buttonText}>{props.type}</Text>
